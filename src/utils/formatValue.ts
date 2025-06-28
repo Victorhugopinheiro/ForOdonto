@@ -1,7 +1,8 @@
 
-const formatValue = Intl.NumberFormat("pt-br", {
+const formatValue = new Intl.NumberFormat("pt-BR", {
     currency:"BRL",
-    style:"currency"
+    style:"currency",
+    minimumFractionDigits:0
 })
 
 
