@@ -298,7 +298,7 @@ export function ContentClinic({ clinic }: UserProps) {
                                             <FormControl className="">
                                                 <Select onValueChange={(e) => {
                                                     field.onChange(e)
-                                                  
+
                                                 }}>
                                                     <SelectTrigger className="w-full">
                                                         <SelectValue placeholder="Selecione o serviço" />

@@ -14,6 +14,7 @@ import { toast } from "sonner"
 import { Dialog, DialogTrigger } from "@/components/ui/dialog"
 import { DialogAppointment } from "./dialog-appointment"
 import { useState } from "react"
+import { DatePicker } from "./datePickers"
 
 interface AppointmentProps {
     timers: String[] | undefined
@@ -40,7 +41,8 @@ export function AppointmentContent({ timers }: AppointmentProps) {
 
 
     const { data, isLoading, refetch } = useQuery({
-        queryKey: ['get-appointments'], queryFn: async () => {
+        queryKey: ['get-appointments', date]
+        , queryFn: async () => {
 
             let activeDate = date
             if (!activeDate) {
@@ -55,7 +57,7 @@ export function AppointmentContent({ timers }: AppointmentProps) {
 
             const json: AppointmentAndService[] = await response.json()
 
-            console.log(json)
+          
 
             if (!response.ok) {
                 return []
@@ -131,7 +133,7 @@ export function AppointmentContent({ timers }: AppointmentProps) {
                 <CardHeader className="flex items-center justify-between">
                     <CardTitle className="text-xl md:text-2xl font-bold">Agendamentos</CardTitle>
 
-                    <CardDescription className="text-lg font-semibold">Horários</CardDescription>
+                    <CardDescription className="text-lg font-semibold"><DatePicker/></CardDescription>
                 </CardHeader>
 
                 <CardContent>

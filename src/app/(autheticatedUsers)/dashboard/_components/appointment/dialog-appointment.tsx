@@ -19,7 +19,13 @@ export function DialogAppointment({ AppointmentAndService }: AppointmentProps) {
                 <div className="flex flex-col gap-4">
                     <article className="flex flex-col gap-1">
                         <p><span className="font-semibold">Horarário:</span> {AppointmentAndService.appointmentTime}</p>
-                        <p><span className="font-semibold">Data:</span> {format(AppointmentAndService.appointmentDate, "dd-MM-yyyy")}</p>
+                        <p><span className="font-semibold">Data:</span> {new Intl.DateTimeFormat('pt-BR', {
+                            timeZone:"UTC",
+                            year:"numeric",
+                            month:"2-digit",
+                            day:"2-digit"
+                        }).format(new Date(AppointmentAndService.appointmentDate))
+                        }</p>
 
                         <p className="mt-2"><span className="font-semibold">Nome:</span> {AppointmentAndService?.name}</p>
                         <p className=""><span className="font-semibold">Telefone:</span> {AppointmentAndService?.phone}</p>
