@@ -69,7 +69,7 @@ export function ContentService({ service }: ServicesProps) {
     return (
         <Dialog open={controlDialog} onOpenChange={(open) => {
             setControlDialog(open)
-            if(!open){
+            if (!open) {
                 setEditingService(null)
             }
         }}>

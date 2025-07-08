@@ -93,17 +93,17 @@ export function Remindercontent({ reminder }: ReminderProps) {
                     <ScrollArea className="h-[300px] w-fullrounded-md  p-4 lg:h-[calc(100vh-15rem)]">
                         <CardContent className="">
                             {reminder.length === 0 ? <p className="text-slate-500">Nenhum lembrete...</p> : reminder.map((reminder, index) => (
-                                
-
-                                    <article key={index} className="bg-amber-200 p-2 my-6 rounded-md flex items-center space-x-2 justify-between">
-                                        <p>{reminder.description}</p>
-                                        <Button onClick={() => handleDeleteReminder(reminder.id)} className="rounded-full bg-red-500 p-2 shadow-none hover:bg-red-400" size={"sm"} ><Trash className="w-4 h-4" color="white" />
-                                        </Button>
-
-                                    </article>
 
 
-                                
+                                <article key={index} className="bg-amber-200 p-2 my-6 rounded-md flex items-center space-x-2 justify-between">
+                                    <p>{reminder.description}</p>
+                                    <Button onClick={() => handleDeleteReminder(reminder.id)} className="rounded-full bg-red-500 p-2 shadow-none hover:bg-red-400" size={"sm"} ><Trash className="w-4 h-4" color="white" />
+                                    </Button>
+
+                                </article>
+
+
+
 
                             ))}
                         </CardContent>

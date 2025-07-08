@@ -15,14 +15,14 @@ datasource db {
 }
 
 model Appointment {
-  id              String @id @default(uuid())
+  id              String   @id @default(uuid())
   name            String
   email           String
   appointmentDate DateTime
   appointmentTime String
-  phone String?
-  serviceId String  
-  service   Service @relation(fields: [serviceId], references: [id])
+  phone           String?
+  serviceId       String
+  service         Service  @relation(fields: [serviceId], references: [id])
 
   userId String?
   user   User?   @relation(fields: [userId], references: [id])
@@ -34,7 +34,7 @@ model Appointment {
 model Reminder {
   id          String  @id @default(uuid())
   description String
-  userId      String? 
+  userId      String?
   user        User?   @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
@@ -47,7 +47,7 @@ model Service {
   price    Int
   duration Int
   status   Boolean @default(true)
-  userId   String  
+  userId   String
 
   user        User          @relation(fields: [userId], references: [id])
   appointment Appointment[]

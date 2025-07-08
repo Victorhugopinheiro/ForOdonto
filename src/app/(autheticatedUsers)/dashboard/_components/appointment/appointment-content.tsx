@@ -57,7 +57,7 @@ export function AppointmentContent({ timers }: AppointmentProps) {
 
             const json: AppointmentAndService[] = await response.json()
 
-          
+
 
             if (!response.ok) {
                 return []
@@ -133,7 +133,7 @@ export function AppointmentContent({ timers }: AppointmentProps) {
                 <CardHeader className="flex items-center justify-between">
                     <CardTitle className="text-xl md:text-2xl font-bold">Agendamentos</CardTitle>
 
-                    <CardDescription className="text-lg font-semibold"><DatePicker/></CardDescription>
+                    <CardDescription className="text-lg font-semibold"><DatePicker /></CardDescription>
                 </CardHeader>
 
                 <CardContent>

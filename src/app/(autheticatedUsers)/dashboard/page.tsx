@@ -32,7 +32,7 @@ export default async function Dashboard() {
             <div className="grid lg:grid-cols-2  gap-2 py-6">
 
 
-                <Appointment userId={session.user.id}/>
+                <Appointment userId={session.user.id} />
 
                 <ReminderComponent userId={session.user.id} />
 

@@ -67,7 +67,7 @@ export function Header() {
                 <nav className="font-bold text-2xl hidden md:flex flex-row space-x-4">{<MenuComponent />}</nav>
 
 
-                <Sheet open={mobileControl}  onOpenChange={setMobileControl}>
+                <Sheet open={mobileControl} onOpenChange={setMobileControl}>
                     <SheetTrigger asChild className="flex md:hidden" >
                         <Button variant={"ghost"} size={"icon"} className="text-black hover:bg-transparent">
                             <Menu width={6} height={6} />
