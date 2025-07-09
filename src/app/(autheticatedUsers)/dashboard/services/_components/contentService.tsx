@@ -22,25 +22,33 @@ import {
 import { Button } from "@/components/ui/button"
 import { Pencil, Plus, X } from "lucide-react"
 import { ContentDialog } from "./contentDialog"
-import { useState } from "react"
+import { use, useState } from "react"
 import { Service } from "../../../../../../generated/prisma"
 import { FormatCurrency } from "@/utils/formatValue"
 import { DeleteService } from "../_actions/delete-service"
 import { toast } from "sonner"
+import { ResultPermission } from "@/utils/limitPlan/canPermission"
+import Link from "next/link"
 
 
 interface ServicesProps {
     service: Service[]
+    userPermission?: ResultPermission
+
 }
 
 
-export function ContentService({ service }: ServicesProps) {
+export function ContentService({ service, userPermission }: ServicesProps) {
 
     console.log(service)
 
 
     const [controlDialog, setControlDialog] = useState(false)
     const [editingService, setEditingService] = useState<Service | null>(null)
+    const permissionUser = userPermission?.planId === "BASIC" ? service.slice(0, 3)
+        : userPermission?.planId === "PROFESSIONAL" ? service : userPermission?.planId === "TRIAL" ? service : []
+
+    console.log(userPermission)
 
 
     async function handleDeleteService(serviceId: string) {
@@ -78,7 +86,15 @@ export function ContentService({ service }: ServicesProps) {
                 <CardHeader className="flex items-center justify-between">
                     <CardTitle className="text-xl md:text-2xl">Serviços</CardTitle>
 
-                    <DialogTrigger asChild><Button><Plus /></Button></DialogTrigger>
+                    {userPermission?.hasPermission && (
+                        <DialogTrigger asChild><Button><Plus /></Button></DialogTrigger>
+                    )}
+
+                    {!userPermission?.hasPermission && (
+                        <Link href={"/dashboard/plans"} className="text-sm text-red-500">
+                            Acesso Limitado
+                        </Link>
+                    )}
 
 
                     <DialogContent onInteractOutside={(e) => {
@@ -101,7 +117,7 @@ export function ContentService({ service }: ServicesProps) {
 
                 <CardContent>
                     <section className="mt-6">
-                        {service && service?.map((item, index) => (
+                        {service && permissionUser?.map((item, index) => (
                             <section className="flex items-center justify-between py-4  border-b border-slate-200" key={item.id}>
 
                                 <div className="flex items-center space-x-1">

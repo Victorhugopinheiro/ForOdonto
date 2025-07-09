@@ -2,7 +2,7 @@ import { Plan } from "../../../generated/prisma";
 import { PlansProps } from "../plans";
 
 
-const plans: PlansProps = {
+export const plans: PlansProps = {
     BASIC: {
         maxServices: 3
     },

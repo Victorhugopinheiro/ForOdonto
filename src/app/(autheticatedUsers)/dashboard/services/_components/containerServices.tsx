@@ -1,4 +1,5 @@
 
+import { canPermission } from "@/utils/limitPlan/canPermission"
 import { GetAllServices } from "../_data-access/get-all-services"
 import { ContentService } from "./contentService"
 
@@ -10,23 +11,16 @@ interface UserSessionProps {
 export async function ContainerServices({ userId }: UserSessionProps) {
 
 
-    const delay = (ms: number): Promise<void> => {
-
-        return new Promise((resolve) => {
-            setTimeout(resolve, ms)
-        })
-
-    }   
-
-    await delay(5000)
+  
 
     const response = await GetAllServices({ user_id: userId })
 
+    const hasPermission = await canPermission({type: "service"})
 
 
     return (
         <div>
-            <ContentService service={response.data || []} />
+            <ContentService service={response.data || []} userPermission={hasPermission} />
         </div>
     )
 }
