@@ -2,24 +2,36 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Subscription } from "../../../../../../generated/prisma";
-import {subscription} from '../../../../../utils/plans/index'
+import { subscription } from '../../../../../utils/plans/index'
 import { Button } from "@/components/ui/button";
-interface subscriptionProps{
+import { managerSubscription } from "../_action/manager-subscription";
+import { toast } from "sonner";
+interface subscriptionProps {
     subscriptions: Subscription
 }
 
-export function ActiveSubscription({subscriptions}:subscriptionProps){
+export function ActiveSubscription({ subscriptions }: subscriptionProps) {
 
-    const findSubscription = subscription.find( item => item.id === subscriptions.plan)
+    const findSubscription = subscription.find(item => item.id === subscriptions.plan)
 
 
     console.log(subscriptions)
 
-    async function handleManagerSign(){
+    async function handleManagerSign() {
+        const response = await managerSubscription()
+
+        if (response.error) {
+            console.error(response.error)
+            toast.error("Erro ao gerenciar assinatura")
+            return
+        }
+
         
+        window.location.href = response.session
+
     }
 
-    return(
+    return (
         <Card>
             <CardHeader>
                 <CardTitle className="text-2xl md:text-3xl font-bold">
