@@ -36,7 +36,7 @@ export async function CreatePermission(subscription: Subscription | null, sessio
             } else {
                 return {
                     hasPermission: false,
-                    planId: "EXPIRED",
+                    planId: subscription.plan,
                     expired: false,
                     plan: null
                 }
@@ -55,7 +55,7 @@ export async function CreatePermission(subscription: Subscription | null, sessio
         return {
             hasPermission: false,
             planId: "EXPIRED",
-            expired: false,
+            expired: true,
             plan: null
         };
     }

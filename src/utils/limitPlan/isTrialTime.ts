@@ -7,7 +7,7 @@ import { is, tr } from "date-fns/locale";
 import { ResultPermission } from "./canPermission";
 
 
-const TRIAL_DAYS = 7; // Define the number of trial days
+export const TRIAL_DAYS = 7; // Define the number of trial days
 export async function isTrialTime(session:Session): Promise<ResultPermission> {
 
     const currentDate = new Date();
@@ -20,7 +20,7 @@ export async function isTrialTime(session:Session): Promise<ResultPermission> {
         return {
             hasPermission: false,
             planId: "EXPIRED",
-            expired: false,
+            expired: true,
             plan: null
         }
     }

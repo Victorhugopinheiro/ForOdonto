@@ -29,7 +29,7 @@ if(!session?.user?.id){
     return {
         hasPermission: false,
         planId: "EXPIRED",
-        expired: false,
+        expired: true,
         plan: null
     }
 }
@@ -56,7 +56,7 @@ switch (type.type) {
         return {
             hasPermission: false,
             planId: "EXPIRED",
-            expired: false,
+            expired: true,
             plan: null
         }
 
