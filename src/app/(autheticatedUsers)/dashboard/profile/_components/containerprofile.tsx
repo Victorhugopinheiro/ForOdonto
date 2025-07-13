@@ -31,6 +31,7 @@ import { FormatPhone, OnlyNumber } from "@/utils/formatPhone";
 import { Session } from "next-auth";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { ChangeImage } from "./changeImage";
 
 
 type UserWithSubscription = Prisma.UserGetPayload<{
@@ -53,9 +54,9 @@ interface InfoUser {
 export function ContainerProfile({ user }: InfoUser) {
 
 
-const {status, update} = useSession()
+    const { status, update } = useSession()
 
-const router = useRouter()
+    const router = useRouter()
 
 
 
@@ -72,7 +73,7 @@ const router = useRouter()
     async function onSubmit(items: ItemsProps) {
 
         const phoneFormat = OnlyNumber(items.phone || "")
-        
+
 
         const itemsAndTimers = {
             items,
@@ -114,7 +115,7 @@ const router = useRouter()
         zone.startsWith("America/Boa_Vista")
     )
 
-    async function handleLogout(){
+    async function handleLogout() {
         signOut()
         update()
         router.replace("/")
@@ -132,9 +133,7 @@ const router = useRouter()
                         <CardHeader>Meu perfil</CardHeader>
                         <CardContent>
                             <div className="my-10 flex justify-center">
-                                <div>
-                                    <Image className="rounded-full" width={200} height={200} alt="Imagem User" src={user.image || ""} />
-                                </div>
+                                <ChangeImage userId={user.id} userImage={user.image}/>
                             </div>
 
                             <div className="space-y-5 flex flex-col gap-4">
@@ -171,12 +170,12 @@ const router = useRouter()
                                         <FormItem>
                                             <FormLabel>Telefone</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Digite seu telefone" {...field}  onChange={(e) => { 
+                                                <Input placeholder="Digite seu telefone" {...field} onChange={(e) => {
                                                     const formatedValue = FormatPhone(e.target.value)
                                                     field.onChange(formatedValue)
-                                                }} 
-                                                    
-                                                    />
+                                                }}
+
+                                                />
                                             </FormControl>
                                         </FormItem>
                                     )}
