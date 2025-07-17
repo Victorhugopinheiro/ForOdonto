@@ -5,6 +5,8 @@ import { useState } from "react";
 import fixImage from '../../../../../../public/foto1.png'
 import { Loader, Upload } from "lucide-react";
 import { toast } from "sonner";
+import { ChangeAvatarClinic } from "../_actions/change-avatar-clinic";
+import { useSession } from "next-auth/react";
 
 interface ChangeImageProps {
     userImage?: string | null;
@@ -12,6 +14,8 @@ interface ChangeImageProps {
 }
 
 export function ChangeImage({ userId, userImage }: ChangeImageProps) {
+
+    const {update} = useSession()
 
     const [previewImage, setPreviewImage] = useState(userImage)
     const [loading, setLoading] = useState(false);
@@ -33,14 +37,28 @@ export function ChangeImage({ userId, userImage }: ChangeImageProps) {
 
             const fileUrl = await uploadImage(newFile);
 
-            console.log(fileUrl)
+       
 
-            if (fileUrl) {
-                setPreviewImage(URL.createObjectURL(newFile));
-                toast.success("Imagem alterada com sucesso!");
-            } else {
+            if (!fileUrl || fileUrl === '') {
+
                 toast.error("Erro ao enviar a imagem.");
+
             }
+
+            
+
+            setPreviewImage(URL.createObjectURL(newFile));
+
+            await ChangeAvatarClinic({imageUrl:fileUrl!})
+
+
+            update({Image: fileUrl})
+
+            
+
+            toast.success("Imagem alterada com sucesso!");
+
+
 
 
         }
@@ -69,7 +87,9 @@ export function ChangeImage({ userId, userImage }: ChangeImageProps) {
 
         const data = await response.json();
 
-        return data as string
+
+       
+        return data.secure_url as string
 
 
     }

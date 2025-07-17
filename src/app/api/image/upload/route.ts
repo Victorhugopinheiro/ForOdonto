@@ -50,5 +50,5 @@ export async function POST(request: Request) {
     // Here you would typically handle the file upload, e.g., save it to a database or cloud storage
     // For demonstration, we will just return the file name and size
 
-    return NextResponse.json(buffer)
+    return NextResponse.json(result)
 }           
