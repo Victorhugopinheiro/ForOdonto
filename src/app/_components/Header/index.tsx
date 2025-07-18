@@ -31,7 +31,7 @@ export function Header() {
 
 
     async function handleLogin() {
-        await handleRegister("github")
+        await handleRegister("google")
     }
 
 

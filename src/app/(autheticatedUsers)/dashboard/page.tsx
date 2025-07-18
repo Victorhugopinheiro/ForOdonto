@@ -24,6 +24,8 @@ export default async function Dashboard() {
 
     return (
         <main className="flex flex-col">
+
+            
             {hasPermission.planId != "EXPIRED" && (
 
                 <div className="space-x-4 flex justify-end items-center">
@@ -34,6 +36,14 @@ export default async function Dashboard() {
                     </Link>
 
                     <CopyPage userId={session?.user?.id} />
+                </div>
+            )}
+
+             {hasPermission.planId === "TRIAL" && (
+                <div className="flex w-full my-2 bg-green-500 rounded-md  ">
+                    <p className="text-white p-2 font-semibold">
+                        {hasPermission.message}
+                    </p>
                 </div>
             )}
 
@@ -59,13 +69,7 @@ export default async function Dashboard() {
             )}
 
 
-            {hasPermission.planId === "TRIAL" && (
-                <div className="flex w-full my-2 bg-green-500 rounded-md  ">
-                    <p className="text-white p-2 font-semibold">
-                        {hasPermission.message}
-                    </p>
-                </div>
-            )}
+           
         </main>
     )
 }

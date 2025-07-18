@@ -58,13 +58,13 @@ export async function checkSubscription(session: Session): Promise<ResultPermiss
    }
 
 
-   const daysRemaining = differenceInDays(new Date(), trailEndDate);
+   const daysRemaining = differenceInDays(trailEndDate, new Date());
 
 
     return {
         planId: "TRIAL",
         expired: true,
-        message: `Período de teste ativo. Restam ${daysRemaining} dias.`
+        message: `Você está no período de teste gratuito. Restam ${daysRemaining} dias.`
     }
 
 }

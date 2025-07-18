@@ -11,6 +11,9 @@ export async function getClinics() {
         const response = await prisma.user.findMany({
             where: {
                 status: true
+            },
+            include:{
+                subscription: true
             }
         })
 

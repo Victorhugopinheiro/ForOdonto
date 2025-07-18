@@ -100,7 +100,7 @@ export function ChangeImage({ userId, userImage }: ChangeImageProps) {
 
         <div className="relative w-40 h-40 md:w-48 md:h-48">
 
-            <div className="w-full h-full flex justify-center items-center">
+            <div className="w-full relative h-full flex justify-center items-center">
                 <span className="absolute z-[2] bg-slate-50/80 p-2 cursor-pointer shadow-xl rounded-full ">
                     {loading ? (
                         <span className="animate-spin"><Loader className="animate-spin" /></span>
