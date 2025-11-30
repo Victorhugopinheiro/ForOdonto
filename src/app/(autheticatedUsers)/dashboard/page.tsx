@@ -25,12 +25,12 @@ export default async function Dashboard() {
     return (
         <main className="flex flex-col">
 
-            
+
             {hasPermission.planId != "EXPIRED" && (
 
                 <div className="space-x-4 flex justify-end items-center">
                     <Link href={`/clinica/${session.user.id}`}>
-                        <Button className="bg-emerald-500 hover:bg-emerald-400">
+                        <Button className="bg-pink-500 hover:bg-pink-400">
                             Meu Agendamento
                         </Button>
                     </Link>
@@ -39,7 +39,7 @@ export default async function Dashboard() {
                 </div>
             )}
 
-             {hasPermission.planId === "TRIAL" && (
+            {hasPermission.planId === "TRIAL" && (
                 <div className="flex w-full my-2 bg-green-500 rounded-md  ">
                     <p className="text-white p-2 font-semibold">
                         {hasPermission.message}
@@ -69,7 +69,7 @@ export default async function Dashboard() {
             )}
 
 
-           
+
         </main>
     )
 }

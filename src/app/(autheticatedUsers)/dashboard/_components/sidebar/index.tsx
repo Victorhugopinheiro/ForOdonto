@@ -2,7 +2,7 @@
 import { clsx } from "clsx";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-
+import cl from "clsx";
 import {
     Sheet,
     SheetContent,
@@ -38,7 +38,7 @@ export function SideBar({ children }: { children: React.ReactNode }) {
     return (
         <div className="flex min-h-screen w-full p-2">
 
-            <aside className={clsx("hidden bg-white p-2 border-r-1 text-black md:flex flex-col gap-4 transition-all duration-300", {
+            <aside className={cl("hidden bg-white p-2 border-r-1 text-black md:flex flex-col gap-4 transition-all duration-300", {
                 "md:w-20": compacted,
                 "md:w-60": !compacted,
             })}>
@@ -47,7 +47,7 @@ export function SideBar({ children }: { children: React.ReactNode }) {
 
                 {!compacted && (
                     <div className="">
-                        <Image priority quality={100} src={logoOdonto} alt="Logo odonto" className="w-auto h-auto" />
+                        <Link className="text-4xl font-bold" href={"/"}><span className="text-pink-500">BEAUTY</span></Link>
                     </div>
                 )}
 

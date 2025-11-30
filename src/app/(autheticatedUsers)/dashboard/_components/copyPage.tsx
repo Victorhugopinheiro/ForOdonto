@@ -11,7 +11,7 @@ interface UserProps{
 export function CopyPage({userId}:UserProps){
 
     function HandleCopyPage(){
-        navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}clinica/${userId}`)
+        navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/clinica/${userId}`)
 
         toast.success("Link de compartilhamento copiado!")
     }

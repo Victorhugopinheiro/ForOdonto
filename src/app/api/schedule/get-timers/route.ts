@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
 
     const { searchParams } = req.nextUrl
 
@@ -96,7 +96,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         return NextResponse.json(blockedTimes)
 
 
-        return NextResponse.json({ message: "ok" })
+  
 
     } catch (err) {
 
@@ -109,6 +109,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
 
 
-    return NextResponse.json({ ok: true })
+    
 
 }

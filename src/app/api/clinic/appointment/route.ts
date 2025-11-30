@@ -50,5 +50,4 @@ export const GET = auth(async function GET(request) {
         return NextResponse.json({ erro: "Erro de requisição" }, { status: 400 })
     }
 
-    console.log(date)
-})
+}) as any;

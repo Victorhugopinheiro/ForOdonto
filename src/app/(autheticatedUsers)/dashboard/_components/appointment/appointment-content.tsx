@@ -17,7 +17,7 @@ import { useState } from "react"
 import { DatePicker } from "./datePickers"
 
 interface AppointmentProps {
-    timers: String[] | undefined
+    timers: string[] | undefined
 }
 
 export type AppointmentAndService = Prisma.AppointmentGetPayload<{
@@ -82,28 +82,26 @@ export function AppointmentContent({ timers }: AppointmentProps) {
 
             const requiredSlots = Math.ceil(appointment.service.duration / 30)
 
-            const startIndex = timers?.indexOf(appointment.appointmentTime)
+            if (timers) {
+                const startIndex = timers.indexOf(appointment.appointmentTime)
 
-            if (startIndex !== -1) {
+                if (startIndex !== -1) {
+                    for (let q = 0; q < requiredSlots; q++) {
+                        const slotIndex = Number(startIndex) + q;
 
-
-                for (let q = 0; q < requiredSlots; q++) {
-                    const slotIndex = Number(startIndex) + q;
-
-
-                    if (slotIndex < Number(timers?.length)) {
-                        occupantMap[timers[slotIndex]] = appointment
+                        if (slotIndex < timers.length) {
+                            occupantMap[timers[slotIndex]] = appointment
+                        }
                     }
-
                 }
-
-
             }
-
 
         }
 
     }
+
+
+
 
 
     async function handleDeleteAppointment(appointmentId: string) {

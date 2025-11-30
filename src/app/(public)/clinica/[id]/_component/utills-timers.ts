@@ -46,6 +46,7 @@ export function SlotSequence(
     blockedSlots: string[],
     requiredSlots: number
 ) {
+    
 
 
     const inicialSlot:number = allSlots.indexOf(slotSelected)
@@ -64,10 +65,6 @@ export function SlotSequence(
     }
 
     return true
-
-
-
-
 
 
 }

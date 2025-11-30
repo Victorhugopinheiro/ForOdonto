@@ -1,16 +1,16 @@
 "use server";
 
-import prisma from "@/lib/prisma";
 import { Session } from "next-auth";
 import {addDays, isAfter} from "date-fns"
-import { is, tr } from "date-fns/locale";
 import { ResultPermission } from "./canPermission";
 
 
-export const TRIAL_DAYS = 7; // Define the number of trial days
+ // Define the number of trial days
 export async function isTrialTime(session:Session): Promise<ResultPermission> {
 
     const currentDate = new Date();
+
+     const TRIAL_DAYS = 7;
 
     const createdAt = session.user.createdAt
 

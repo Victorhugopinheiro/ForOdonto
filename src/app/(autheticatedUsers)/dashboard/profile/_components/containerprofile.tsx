@@ -62,6 +62,8 @@ export function ContainerProfile({ user }: InfoUser) {
 
     const [selectedHours, setSelectedHours] = useState<string[]>(user.times ?? [])
 
+    
+
     const form = ProfileForm({
         address: user.address,
         name: user.name,
@@ -71,6 +73,10 @@ export function ContainerProfile({ user }: InfoUser) {
     })
 
     async function onSubmit(items: ItemsProps) {
+
+        
+
+        
 
         const phoneFormat = OnlyNumber(items.phone || "")
 
@@ -190,10 +196,10 @@ export function ContainerProfile({ user }: InfoUser) {
                                             <FormLabel>Status da clínica</FormLabel>
                                             <FormControl className="w-full">
                                                 <Select onValueChange={field.onChange}
-                                                    defaultValue={field.value ? "active" : "inactive"}
+                                                   
                                                 >
                                                     <SelectTrigger className="w-full">
-                                                        <SelectValue placeholder="selecione o status da cliníca" />
+                                                        <SelectValue placeholder="Selecione o status da cliníca" />
                                                     </SelectTrigger>
                                                     <SelectContent className="">
                                                         <SelectItem value="active">Clínica aberta</SelectItem>

@@ -29,7 +29,7 @@ interface UserProps {
 
 export function Profissionais({ clinics }: UserProps) {
     return (
-        <section className="bg-gray-100 py-12 mt-10">
+        <section className="bg-gray-100 py-12 ">
             <div className="container mx-auto p-2">
                 <h1 className="text-center font-bold text-3xl">Clinicas disponíveis</h1>
 
@@ -41,7 +41,7 @@ export function Profissionais({ clinics }: UserProps) {
 
                                 <div className="relative h-48">
                                     <Image quality={100} priority fill className="object-cover" src={clinic.image ?? ImgServico} alt="Imagem serviços" />
-                                    {clinic.subscription?.status === `active` && 
+                                    {clinic.subscription?.status === `active` &&
                                         <DestaquePlan />
                                     }
                                 </div>
@@ -57,8 +57,8 @@ export function Profissionais({ clinics }: UserProps) {
 
                                     </div>
 
-                                    <Link href={`/clinica/${clinic.id}`} className="bg-emerald-500
-                             px-2 py-2 flex justify-center items-center text-center rounded-lg text-white hover:bg-emerald-400">
+                                    <Link href={`/clinica/${clinic.id}`} className="bg-pink-500
+                             px-2 py-2 flex justify-center items-center text-center rounded-lg text-white hover:bg-pink-200">
                                         Agende seu Horário
                                         <ArrowRight size={22} />
                                     </Link>

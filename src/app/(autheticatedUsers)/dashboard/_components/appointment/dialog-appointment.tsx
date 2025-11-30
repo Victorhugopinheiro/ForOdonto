@@ -18,7 +18,7 @@ export function DialogAppointment({ AppointmentAndService }: AppointmentProps) {
             {AppointmentAndService && (
                 <div className="flex flex-col gap-4">
                     <article className="flex flex-col gap-1">
-                        <p><span className="font-semibold">Horarário:</span> {AppointmentAndService.appointmentTime}</p>
+                        <p><span className="font-semibold">Horário:</span> {AppointmentAndService.appointmentTime}</p>
                         <p><span className="font-semibold">Data:</span> {new Intl.DateTimeFormat('pt-BR', {
                             timeZone:"UTC",
                             year:"numeric",

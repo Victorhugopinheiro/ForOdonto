@@ -14,7 +14,7 @@ export async function Appointment({ userId }: UserProps) {
     const getTimers = await GetClinicTimers(userId)
 
 
-    console.log(getTimers.data)
+    
 
     return (
         <>

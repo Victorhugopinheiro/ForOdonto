@@ -133,7 +133,7 @@ export function ContentClinic({ clinic }: UserProps) {
         if (selectedDate) {
 
             fetchBlockedTimes(selectedDate).then((blocked) => {
-                console.log("Horarios reservados:", blocked)
+
                 setBlockedTimes(blocked)
 
                 const times = clinic.times || []
@@ -145,6 +145,7 @@ export function ContentClinic({ clinic }: UserProps) {
                 }))
 
                 setAvaliableTimes(finalSlots)
+              
 
                 const actuallyAvailableHour = finalSlots.find(
                     (slot) => slot.time === selectedTime && slot.available
@@ -304,9 +305,15 @@ export function ContentClinic({ clinic }: UserProps) {
                                                         <SelectValue placeholder="Selecione o serviço" />
                                                     </SelectTrigger>
                                                     <SelectContent>
-                                                        {clinic.service.map((service) => (
-                                                            <SelectItem key={service.id} value={service.id}>{service.name} - {Math.round(service.duration / 60)}H:{service.duration % 60}Min</SelectItem>
-                                                        ))}
+                                                        {clinic.service.map((service) => {
+                                                            
+
+                                                            const time = service.duration / 60 < 1 ? `${service.duration}Min` : `${Math.floor(service.duration / 60)}H:${service.duration % 60}Min`
+
+                                                            return (
+                                                                <SelectItem key={service.id} value={service.id}>{service.name} - {time}Min</SelectItem>
+                                                            )
+                                                        })}
 
                                                     </SelectContent>
                                                 </Select>
@@ -329,7 +336,8 @@ export function ContentClinic({ clinic }: UserProps) {
                                                             availableTimeSlots={avaliableTimes}
                                                             blockedTimes={blockedTimes}
                                                             grabHowManySlots={
-                                                                clinic.service.find(service => service.id === selectedServiceId) ? Math.ceil(clinic.service.find(service => service.id === selectedServiceId)!.duration / 30) : 1
+                                                                clinic.service.find(service => service.id === selectedServiceId)
+                                                                    ? Math.ceil(clinic.service.find(service => service.id === selectedServiceId)!.duration / 30) : 1
                                                             }
                                                             refreshSelectedTimer={(time) => setSelectedTime(time)}
                                                             selectedTime={selectedTime}
@@ -343,11 +351,8 @@ export function ContentClinic({ clinic }: UserProps) {
                                     </div>
                                 )}
 
-
-                                {clinic.status ? (
-                                    <Button disabled={!watch("name") || !watch("email") ||
-                                        !watch("phone") || !watch("date")} type="submit">Agendar</Button>
-                                ) : <p className="bg-red-500 p-2 rounded-md text-center text-white">{clinic.name} está fechada no momento</p>}
+                                <Button disabled={!watch("name") || !watch("email") ||
+                                    !watch("phone") || !watch("date")} type="submit">Agendar</Button>
                             </form>
                         </Form>
 
