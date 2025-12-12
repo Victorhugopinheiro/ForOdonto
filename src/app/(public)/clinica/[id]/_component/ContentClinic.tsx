@@ -168,7 +168,7 @@ export function ContentClinic({ clinic }: UserProps) {
     return (
         <div className="min-h-screen w-full ">
 
-            <div className="w-full h-32 bg-emerald-500" />
+            <div className="w-full h-32 bg-pink-400" />
 
             <div className="container mx-auto ">
 
@@ -183,7 +183,7 @@ export function ContentClinic({ clinic }: UserProps) {
 
                         <div className="flex gap-2 mb-6">
                             <MapPin />
-                            <p>Rua dev, 92, Sp</p>
+                            <p>{clinic.address}</p>
 
                         </div>
                     </div>

@@ -47,7 +47,7 @@ export function Header() {
 
             {status === "loading" ? <></> : session ?
                 <Link href={"dashboard"} className="flex justify-center text-white bg-zinc-900 px-2 py-1 rounded-md text-lg font-medium">
-                    Acessar clinicas
+                    Acessar 
                 </Link>
                 :
                 <Button onClick={handleLogin}>
@@ -61,7 +61,7 @@ export function Header() {
     return (
         <header className="fixed top-0 right-0 left-0 bg-white py-4 px-6">
             <div className="container mx-auto flex justify-between items-center">
-                <Link className="text-4xl font-bold" href={"/"}>Agenda<span className="text-pink-400 ml-2">Beauty</span></Link>
+                <Link className="text-4xl font-bold" href={"/"}>Nail<span className="text-pink-400 ml-2">Time</span></Link>
 
 
                 <nav className="font-bold text-2xl hidden md:flex flex-row space-x-4">{<MenuComponent />}</nav>

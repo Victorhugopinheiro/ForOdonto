@@ -35,7 +35,7 @@ export function ButtonPlan({ type }: PlanProps) {
     }
 
     return (
-        <Button onClick={handleCreateBilling} className={`w-full ${type === "PROFESSIONAL" && "bg-emerald-500 hover:bg-emerald-400"}`}>
+        <Button onClick={handleCreateBilling} className={`w-full ${type === "PROFESSIONAL" && "bg-pink-500 hover:bg-pink-400"}`}>
             Assinar</Button>
     )
 }

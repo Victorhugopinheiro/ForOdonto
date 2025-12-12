@@ -45,7 +45,7 @@ export function ActiveSubscription({ subscriptions }: subscriptionProps) {
                 <div className="flex justify-between items-center">
                     <h3 className="font-semibold text-lg md:text-xl">Profissional</h3>
 
-                    <div className="bg-emerald-500 rounded-md py-1 px-4 text-white font-semibold">
+                    <div className="bg-pink-500 rounded-md py-1 px-4 text-white font-semibold">
                         Ativo
                     </div>
                 </div>

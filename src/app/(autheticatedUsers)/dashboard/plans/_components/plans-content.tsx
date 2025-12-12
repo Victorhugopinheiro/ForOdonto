@@ -14,10 +14,10 @@ export function PlansContent() {
 
 
 
-                <Card className={`${index === 1 && "pt-0 border-emerald-500"} `} key={plan.id}>
+                <Card className={`${index === 1 && "pt-0 border-pink-500"} `} key={plan.id}>
 
                     {index === 1 && (
-                        <div className="bg-emerald-500 w-full rounded-t-lg py-3">
+                        <div className="bg-pink-500 w-full rounded-t-lg py-3">
                             <p className="text-center font-semibold text-white">PROMOÇÃO EXCLUSIVA</p>
                         </div>
                     )}

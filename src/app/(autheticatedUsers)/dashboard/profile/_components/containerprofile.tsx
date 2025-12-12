@@ -246,7 +246,7 @@ export function ContainerProfile({ user }: InfoUser) {
 
 
 
-                                <Button type="submit" className="w-full bg-emerald-500 hover:bg-emerald-400">Salvar alterações</Button>
+                                <Button type="submit" className="w-full bg-pink-500 hover:bg-pink-400">Salvar alterações</Button>
 
 
 

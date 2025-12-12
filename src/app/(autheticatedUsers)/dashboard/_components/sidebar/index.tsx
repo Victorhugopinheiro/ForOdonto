@@ -47,7 +47,7 @@ export function SideBar({ children }: { children: React.ReactNode }) {
 
                 {!compacted && (
                     <div className="">
-                        <Link className="text-4xl font-bold" href={"/"}><span className="text-pink-500">BEAUTY</span></Link>
+                        <Link className="text-4xl font-bold" href={"/"}><span className="text-pink-500">NAIL TIME</span></Link>
                     </div>
                 )}
 
@@ -167,7 +167,7 @@ export function SideBar({ children }: { children: React.ReactNode }) {
                             </div>
                             <SheetContent>
                                 <SheetHeader>
-                                    <SheetTitle>Odonto Pro</SheetTitle>
+                                    <SheetTitle>Nail Time</SheetTitle>
                                     <SheetDescription>
                                         Menu administrativo
                                     </SheetDescription>

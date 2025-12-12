@@ -14,7 +14,8 @@ export async function CreatePermission(subscription: Subscription | null, sessio
 
         const countServices = await prisma.service.count({
             where: {
-                userId: session.user.id
+                userId: session.user.id,
+                status: true
             }
 
         })
