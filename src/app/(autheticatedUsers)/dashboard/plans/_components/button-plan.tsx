@@ -15,17 +15,15 @@ export function ButtonPlan({ type }: PlanProps) {
 
     async function handleCreateBilling() {
 
-        const {sessionId, error} = await CreateSubscription({ type: type })
+        const {sessionId, error, url} = await CreateSubscription({ type: type })
 
         if(error){
             toast.error("Erro ao assinar")
             return
         }
 
-        const stripe = await getStripeJs()
-
-        if(stripe){
-           await stripe.redirectToCheckout({sessionId:sessionId})
+        if(url){
+            window.location.href = url
         }
 
 

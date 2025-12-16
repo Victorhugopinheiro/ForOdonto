@@ -62,29 +62,42 @@ export async function CreateSubscription({ type }: PlanProps) {
 
     }
 
+    try {
 
-    const sessionStripe = await stripe.checkout.sessions.create({
-        customer: customerId,
-        payment_method_types: ["card"],
-        billing_address_collection: "required",
-        line_items: [
-            {
-                price: type === "BASIC" ? process.env.STRIPE_PLAN_BASIC : process.env.STRIPE_PLAN_PROFISSIONAL,
-                quantity: 1
+        const sessionStripe = await stripe.checkout.sessions.create({
+            customer: customerId,
+            payment_method_types: ["card"],
+            billing_address_collection: "required",
+            line_items: [
+                {
+                    price: type === "BASIC" ? process.env.STRIPE_PLAN_BASIC : process.env.STRIPE_PLAN_PROFISSIONAL,
+                    quantity: 1
 
-            }
-        ],
-        metadata: {
-            type: type
-        },
-        mode: "subscription",
-        allow_promotion_codes: true,
-        success_url: process.env.STRIPE_SUCCESS_URL,
-        cancel_url: process.env.STRIPE_CANCEL_URL
-    })
+                }
+            ],
+            metadata: {
+                type: type
+            },
+            mode: "subscription",
+            allow_promotion_codes: true,
+            success_url: process.env.STRIPE_SUCCESS_URL,
+            cancel_url: process.env.STRIPE_CANCEL_URL
+        })
 
-    return {
-        sessionId: sessionStripe.id
+        return {
+            sessionId: sessionStripe.id,
+            url: sessionStripe.url, 
+            error: null
+        }
+
+    } catch (err) {
+        console.error("Erro Stripe:", err)
+        return {
+            sessionId: null,
+            url: null,
+            error: "Erro ao criar sessão de pagamento"
+        }
+
     }
 
 
