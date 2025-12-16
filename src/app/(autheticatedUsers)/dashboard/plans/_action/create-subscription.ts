@@ -12,7 +12,7 @@ type PlanProps = {
 
 
 export async function CreateSubscription({ type }: PlanProps) {
-
+console.log("Iniciando criação de assinatura para o plano:", type)
     const session = await auth()
     const userId = session?.user.id
 
@@ -43,7 +43,13 @@ export async function CreateSubscription({ type }: PlanProps) {
 
     let customerId = user.stripe_customer_id
 
+
+    if(customerId){
+        console.log("Cliente Stripe existente:", customerId)
+    }
+
     if (!customerId) {
+        console.log("Criando novo cliente Stripe")
         const customer = await stripe.customers.create({
             email: user.email
         })
@@ -95,7 +101,7 @@ export async function CreateSubscription({ type }: PlanProps) {
         return {
             sessionId: null,
             url: null,
-            error: "Erro ao criar sessão de pagamento"
+            error: err
         }
 
     }

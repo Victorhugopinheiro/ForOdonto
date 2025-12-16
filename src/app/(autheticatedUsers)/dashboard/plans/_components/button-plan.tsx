@@ -18,6 +18,7 @@ export function ButtonPlan({ type }: PlanProps) {
         const {sessionId, error, url} = await CreateSubscription({ type: type })
 
         if(error){
+            console.log(error)
             toast.error("Erro ao assinar")
             return
         }
