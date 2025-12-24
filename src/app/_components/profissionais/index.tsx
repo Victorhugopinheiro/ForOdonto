@@ -48,7 +48,7 @@ export function Profissionais({ clinics }: UserProps) {
 
                                 <div className="flex flex-col justify-between p-4 gap-2 ">
 
-                                    <div className="flex justify-between min-h-[80px] ">
+                                    <div className="flex justify-between min-h-20">
                                         <div>
                                             <p className="font-semibold line-clamp-2">{clinic.name}</p>
                                             <p className="text-gray-500 text-sm line-clamp-2">{clinic.address ?? "Nenhum endereço informado"}</p>

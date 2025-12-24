@@ -145,7 +145,7 @@ export function ContentClinic({ clinic }: UserProps) {
                 }))
 
                 setAvaliableTimes(finalSlots)
-              
+
 
                 const actuallyAvailableHour = finalSlots.find(
                     (slot) => slot.time === selectedTime && slot.available
@@ -256,7 +256,7 @@ export function ContentClinic({ clinic }: UserProps) {
                                                         <Button
                                                             variant={"outline"}
                                                             className={cn(
-                                                                "w-[240px] pl-3 text-left font-normal",
+                                                                "w-60 pl-3 text-left font-normal",
                                                                 !field.value && "text-muted-foreground"
                                                             )}
                                                         >
@@ -274,14 +274,16 @@ export function ContentClinic({ clinic }: UserProps) {
                                                         mode="single"
                                                         selected={field.value}
                                                         onSelect={(e) => {
-                                                            field.onChange(e)
-                                                            setSelectedTime("")
+                                                            field.onChange(e);
+                                                            setSelectedTime("");
                                                         }}
-                                                        disabled={(date) =>
-                                                            date < new Date()
-                                                        }
+                                                        disabled={(date) => date < new Date()}
                                                         captionLayout="dropdown"
+                                                        // Adicione estas duas linhas abaixo:
+                                                        startMonth={new Date(2025, 0)} // Janeiro de 2024 (mês 0)
+                                                        endMonth={new Date(2026, 11)}   // Dezembro de 2030 (mês 11)
                                                     />
+
                                                 </PopoverContent>
                                             </Popover>
                                             <FormMessage />
@@ -306,12 +308,12 @@ export function ContentClinic({ clinic }: UserProps) {
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         {clinic.service.map((service) => {
-                                                            
+
 
                                                             const time = service.duration / 60 < 1 ? `${service.duration}Min` : `${Math.floor(service.duration / 60)}H:${service.duration % 60}Min`
 
                                                             return (
-                                                                <SelectItem key={service.id} value={service.id}>{service.name} - {time}Min</SelectItem>
+                                                                <SelectItem key={service.id} value={service.id}>{service.name} - {time}</SelectItem>
                                                             )
                                                         })}
 
