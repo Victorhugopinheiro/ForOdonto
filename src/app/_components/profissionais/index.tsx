@@ -57,7 +57,7 @@ export function Profissionais({ clinics }: UserProps) {
 
                                     </div>
 
-                                    <Link href={`/clinica/${clinic.id}`} className="bg-pink-500
+                                    <Link href={`/clinica/${clinic.id}`} className="bg-pink-400
                              px-2 py-2 flex justify-center items-center text-center rounded-lg text-white hover:bg-pink-200">
                                         Agende seu Horário
                                         <ArrowRight size={22} />
