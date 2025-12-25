@@ -11,7 +11,7 @@ export function isToday(selectedDate: Date | undefined) {
     }
 
     return (
-        selectedDate.getFullYear() === actualDate.getFullYear() &&
+        selectedDate.getFullYear() === actualDate.getFullYear() || selectedDate.getFullYear() === actualDate.getFullYear() + 1 &&
         selectedDate.getMonth() === actualDate.getMonth() 
 
     )
